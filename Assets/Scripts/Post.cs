@@ -4,30 +4,22 @@ using UnityEngine;
 
 public class Post : MonoBehaviour
 {
-    public List<Package> _packages;
+    public List<Addres> addresList;
+    [HideInInspector] public List<Package> packages;
     void Start()
     {
         StartCoroutine(ParcelGenerator());
     }
-
-  
-    void Update()
-    {
-        
-    }
-
+    
     IEnumerator ParcelGenerator()
     {
         while (true)
         {
             var time = Random.Range(5f, 10f);
-            Debug.Log(time);
             yield return new WaitForSeconds(time);
             var package = new GameObject().AddComponent<Package>();
-            package.GetComponent<Package>()._ListPackage = _packages;
-            _packages.Add(package);
-            Debug.Log("+1");
+            package.GetComponent<Package>()._ListPackage = packages;
+            packages.Add(package);
         }
     }
-    
 }

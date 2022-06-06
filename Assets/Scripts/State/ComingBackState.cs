@@ -1,33 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "State/Coming Back State", fileName = "ComingBackState")]
 public class ComingBackState : State
 {
-    public void Init()
+    public override void Init()
     {
-        
+        postman.text.text = "Go Post";
     }
     
     public override void Run()
     {
-       
+       MoveToPost();
     }
     
     
-    public void MoveToAddres(Transform addres)
+    public void MoveToPost()
     {
-        
-        
-        var distance = (Vector2.Distance(postman.transform.position, addres.transform.position));
+        var distance = (Vector2.Distance(postman.transform.position, postman.post.transform.position));
 
         if (distance > 0.5f)
         {
-//            TODO идем дальше
+            postman.MoveTo(postman.post.transform.position);
         }
         else
         {
-            //           TODO отдаем посылку.
+            postman.SetState(postman.waitingForParcelState);
         }
     }
 }

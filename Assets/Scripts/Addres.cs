@@ -1,12 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class Addres : MonoBehaviour
 {
-    public string nameAddres;
     public bool isClosed;
     
     private TextMeshPro _text;
@@ -15,12 +11,7 @@ public class Addres : MonoBehaviour
     {
         _text = GetComponentInChildren<TextMeshPro>();
     }
-
-  
-    void Update()
-    {
-        
-    }
+    
 
     private void OnMouseDown()
     {
@@ -33,7 +24,6 @@ public class Addres : MonoBehaviour
         {
             _text.color = Color.red;
             isClosed = true;
-            Debug.Log("Жмакнули по " + nameAddres);
         }
     }
 }
