@@ -15,11 +15,14 @@ public class Post : MonoBehaviour
     {
         while (true)
         {
-            var time = Random.Range(5f, 10f);
-            yield return new WaitForSeconds(time);
-            var package = new GameObject().AddComponent<Package>();
-            package.GetComponent<Package>()._ListPackage = packages;
-            packages.Add(package);
+            if (packages.Count < 21)
+            {
+                var time = Random.Range(5f, 10f);
+                yield return new WaitForSeconds(time);
+                var package = new GameObject().AddComponent<Package>();
+                package.GetComponent<Package>()._ListPackage = packages;
+                packages.Add(package);
+            }
         }
     }
 }
